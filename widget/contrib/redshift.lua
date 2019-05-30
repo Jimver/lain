@@ -45,6 +45,7 @@ end
 --                 Use it to update widget text or icons on status change.
 function redshift:attach(widget, fun)
     redshift.update_fun = fun or function() end
+    execute("pkill -9 redshift")
     if not redshift.pid then redshift:start() end
     if widget then
         widget:buttons(awful.util.table.join(awful.button({}, 1, function () redshift:toggle() end)))
